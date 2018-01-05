@@ -7,9 +7,9 @@
 #####The following is the tech-stack needed for this project:
 
 *  Front-End Technologies
-  *  ReactJS
-  *  Current ES6 practices
+       *  ReactJS
+       *  Current ES6 practices
 *  Back-end Technologies
-  *  NodeJS
-  *  Express
-  *  MongoDB
+       *  NodeJS
+       *  Express
+       *  MongoDB
