@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Login from './components/login/login';
+import MainScreen from './components/mainscreen/mainscreen';
 import { BrowserRouter as Router,
   Route,
   Switch,
@@ -19,6 +19,7 @@ class App extends Component {
 
         <Switch>
           <Route exact path="/" component={Login}/>
+          <Route exact path="/main" component={MainScreen}/>
         </Switch>
         
       </div>
