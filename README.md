@@ -13,3 +13,5 @@
      *  NodeJS
      *  Express
      *  MongoDB
+
+##### Please view the README of the client-side [here](https://github.com/k52wilso/React-FullStack-Project/tree/master/client).
