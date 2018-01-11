@@ -13,13 +13,17 @@ class App extends Component {
 
 
   render() {
+    const baseUrl = process.env.PUBLIC_URL; 
     return (
       <Router>
       <div className="App">
 
         <Switch>
-          <Route exact path="/" component={Login}/>
-          <Route exact path="/main" component={MainScreen}/>
+          {/* The login screen */}
+          <Route exact path={baseUrl + "/"} component={Login}/>
+
+          {/* The Main screen after login */}
+          <Route exact path={baseUrl + "/main"} component={MainScreen}/>
         </Switch>
         
       </div>

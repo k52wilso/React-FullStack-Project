@@ -14,6 +14,7 @@ class Login extends Component {
       
 
   render() {
+    const baseUrl = process.env.PUBLIC_URL; 
     return (
       <div className="main">
 
@@ -29,7 +30,7 @@ class Login extends Component {
               <input type="email" name="email" placeholder="Email"/>
               <input type="password" name="password" placeholder="Password"/>
 
-              <Link to="/main">
+              <Link to={baseUrl + "/main"}>
                 <button type="button">Login</button>
               </Link>
           </form>
