@@ -18,11 +18,12 @@
 }
 
 .menubutton {
+    position: relative;
     width:20%;
     height:100%;
 }
 
-.menubutton:hover {
+.menubutton:hover{
     background-color: #1b689b;
     cursor:pointer;
 }
@@ -34,6 +35,32 @@
     margin-bottom: 0;
 }
 
+.menu {
+    position: absolute;
+    background-color: #fff;
+    top:-84px;
+    width:100%;
+    height:auto;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.menu ul {
+    padding:0;
+    margin:0;
+    list-style: none;
+}
+
+.menu li {
+    color:black;
+    padding:10px 0;
+}
+
+.menu li:hover{
+    cursor: pointer;
+    background-color: rgb(147, 195, 207);
+}
+
 /* Task in Taskbar CSS */
 
 .taskbar .task {
@@ -43,9 +70,16 @@
     background-color: #1b689b;
     border-radius:5px;
     margin:5px;
+    transition:0.1s ease-in-out;
+}
+
+.taskbar .task:hover{
+    cursor:pointer;
+    background-color: #78c2f0;
 }
 
 .taskbar .task h3 {
     color:white;
-    margin:0;
+    margin:10px;
+    text-align: center;
 }

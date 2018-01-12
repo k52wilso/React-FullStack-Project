@@ -22,7 +22,7 @@ class TaskPanel extends Component {
         
             <div className="panel-title" >
                 <h4>{task.taskName}</h4>
-                <div className="panel-min-button">
+                <div className="panel-min-button" onClick={this.props.minimize}>
                     _
                 </div>
                 <div className="panel-max-button">

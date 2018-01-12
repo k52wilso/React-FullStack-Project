@@ -22,14 +22,21 @@ const remove = (array, element) => {
 // - taskPosition: is a object of {xPos,yPos} denoting tasks position in view
 // - component: the component that needs to be display 
 
-// },{
-//     key:2,
-//     taskName:"Mature Plan SDO",
-//     taskOpen:true,
-//     taskMinimize:true,
-//     taskMaximize:false,
-//     component: () => <MatureSDOTask/>
-// }];
+const tasks = [{
+    key:1,
+    taskName:"Mature Plan",
+    taskOpen:true,
+    taskMinimize:false,
+    taskMaximize:false,
+    component: <MatureTask/>
+    },{
+    key:2,
+    taskName:"Mature Plan SDO",
+    taskOpen:true,
+    taskMinimize:false,
+    taskMaximize:false,
+    component:<MatureTask/>
+}];
 
 class TaskBar extends Component {
 
@@ -44,7 +51,9 @@ class TaskBar extends Component {
         
     }
 
-    
+    componentDidMount(){
+        this.setState({tasks});
+    }
     
   
       
@@ -66,8 +75,15 @@ class TaskBar extends Component {
                 }
             })}
         </div>
-        <div className="menubutton">
+        <div className="menubutton" >
             <h3>Search Tools</h3>
+            <div className="menu">
+                <ul>
+                {this.state.tasks.map((task) => (
+                    <li key={task.key} onClick={this.props.create.bind(this,task)}>{task.taskName}</li>
+                ))}
+                </ul>
+            </div>
         </div>
       </div>
     );

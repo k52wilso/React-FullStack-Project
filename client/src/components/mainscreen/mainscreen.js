@@ -3,14 +3,10 @@ import TaskBar from '../../components/taskbar/taskbar.js';
 import TaskPanel from '../../components/taskbar/task/taskPanel.js';
 import MatureTask from '../../components/taskbar/task/maturetask';
 import MatureSDOTask from '../../components/taskbar/task/maturesdotask';
+import update from 'immutability-helper';
+import {Link} from 'react-router-dom';
 
-const tasks = [{
-  key:1,
-  taskName:"Mature Plan",
-  taskOpen:true,
-  taskMinimize:true,
-  taskMaximize:false,
-  component: <MatureTask/>}];
+
 
 class MainScreen extends Component {
 
@@ -19,46 +15,78 @@ class MainScreen extends Component {
 
       this.addPanel = this.addPanel.bind(this);
       this.closePanel = this.closePanel.bind(this);
+      this.minimize = this.minimize.bind(this);
     }
 
     state = {
       panels:[]
     }
 
+    //Add a panel 
     addPanel(panel){
-      const { panels } = this.state;
-      panels.push(panel);
-      this.setState({panels});
+
+      let index = this.state.panels.findIndex((p) => {return p.key == panel.key;});
+
+      if(index == -1){ //Create singleton pattern
+
+      
+
+       // get new state after add new panel
+       let newPanels = update(this.state,{panels: {$push: [panel]}});
+       
+       
+       this.setState({
+         panels:newPanels.panels
+       })
+
+      }
     }
   
-    componentDidMount(){
+    //Minimizes (or unminimize) the panel 
+    minimize(panel){
+      
+      // Find the index of given panel
+      let index = this.state.panels.findIndex((p) => {return p.key == panel.key;});
+      
+      // get new state after changing panel's state
+      let newPanels = update(this.state,{panels: {[index]: {taskMinimize: {$set: !panel.minimize }} } });
+      
       this.setState({
-        panels:tasks
+        panels:newPanels.panels
       })
     }
+
+    
       
     //Close the given panel
-    closePanel(panel,element){
-
-      panel.taskOpen = false;
-
+    closePanel(panel){
+      // Find the index of given panel
+      let index = this.state.panels.findIndex((p) => {return p.key == panel.key;});
+      
+      // get new state after changing panel's state
+      let newPanels = update(this.state,{panels: {$splice: [[index, 1]]} });
+      
+      this.setState({
+        panels:newPanels.panels
+      })
     }
 
   render() {
     return (
       <div className="main">
         <div className="viewport resize-container">
+        <h2>Data Processing Software (<Link to="/">logout</Link>)</h2>
         {this.state.panels.map((panel) => {
-            if(panel.taskOpen){
+            if(panel.taskOpen && !panel.taskMinimize){
               return (
                 
-                 <TaskPanel key={panel.key} task={panel} close={this.closePanel.bind(this,panel)}/>              
+                 <TaskPanel key={panel.key} task={panel} minimize={this.minimize.bind(this,panel)} close={this.closePanel.bind(this,panel)}/>              
                
              ) 
             }
           })}
         </div>
-        <TaskBar create={this.addPanel} tasks={this.state.panels}/>
+        <TaskBar create={this.addPanel} tasks={this.state.panels} minimize={this.minimize}/>
       </div>
     );
   }
