@@ -11,7 +11,11 @@ class Task extends Component {
   render() {
     return (
       <div className="task">
+      {this.props.task && 
+        <div >
         <h3>{this.props.name}</h3>
+      </div>
+      }
       </div>
     );
   }

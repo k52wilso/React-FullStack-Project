@@ -10,38 +10,35 @@ class TaskPanel extends Component {
             task:{}
         };
 
-       
+        
     }
-
-
-    // Sets the task based by parent component
-    componentDidMount(){
-        let task = this.props.task;
-        this.setState({task});
-    }
-
-    
-    
-
-      
 
   render() {
-    const { task } = this.state;
+    const { task } = this.props;
     return (
-      <div className="panel resize-drag" key={task.key}>
-        <div className="panel-title" onMouseDown={this.movePanel}>
-            <h4>{task.taskName}</h4>
-            <div className="panel-min-button">
-                _
+      
+        
+        <div className="panel resize-drag" key={task.key}>
+        
+            <div className="panel-title" >
+                <h4>{task.taskName}</h4>
+                <div className="panel-min-button">
+                    _
+                </div>
+                <div className="panel-max-button">
+                    &lt;&gt;  
+                </div>
+                <div className="panel-close-button" onClick={this.props.close}>
+                    X
+                </div>
             </div>
-            <div className="panel-max-button">
-                &lt;&gt;  
-            </div>
-            <div className="panel-close-button">
-                X
+            <div className="inner">
+                {task.component}
             </div>
         </div>
-      </div>
+        
+     
+        
     );
   }
 }

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './taskbar.css';
 import Task from './task/task';
+import MatureTask from './task/maturetask';
+import MatureSDOTask from './task/maturesdotask';
 import TaskPanel from './task/taskPanel';
 import ReactDOM from "react-dom";
 
@@ -18,19 +20,16 @@ const remove = (array, element) => {
 // - taskMinimize: task is smaller sized
 // - taskMaximized: task is full viewport
 // - taskPosition: is a object of {xPos,yPos} denoting tasks position in view
-const tasks = [{
-    key:1,
-    taskName:"Mature Plan",
-    taskOpen:true,
-    taskMinimize:true,
-    taskMaximize:false,
-},{
-    key:2,
-    taskName:"Mature Plan SDO",
-    taskOpen:true,
-    taskMinimize:true,
-    taskMaximize:false,
-}];
+// - component: the component that needs to be display 
+
+// },{
+//     key:2,
+//     taskName:"Mature Plan SDO",
+//     taskOpen:true,
+//     taskMinimize:true,
+//     taskMaximize:false,
+//     component: () => <MatureSDOTask/>
+// }];
 
 class TaskBar extends Component {
 
@@ -45,27 +44,26 @@ class TaskBar extends Component {
         
     }
 
-    // Set the state of tasks 
-    componentDidMount(){
-        this.setState({tasks});
-        tasks.map((task) => {
-           return(this.props.create(task));
-        });
-    }
+    
+    
   
       
 
   render() {
-      const { tasks } = this.state;
+      
     return (
       <div className="taskbar">
         <div className="tasks">
 
             {/* Each task map to a Task Component */}
-            {tasks.map((task) => {
-                return (
-                    <Task key={task.key} name={task.taskName}/>
-                )
+            {this.props.tasks.map((task) => {
+                 if(task.taskOpen){
+                    return (
+                    
+                            <Task key={task.key} name={task.taskName} task={task}/>
+                        
+                    )
+                }
             })}
         </div>
         <div className="menubutton">
