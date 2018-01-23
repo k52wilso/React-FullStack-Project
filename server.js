@@ -1,15 +1,25 @@
 const express = require('express');
-
 const app = express();
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
-app.get('/api/customers',(req,res) => {
-    const customers = [
-        {id:1, firstName:'John', lastName: 'Doe'},
-        {id:2, firstName:'Steve', lastName: 'Smith'},
-        {id:3, firstName:'Mary', lastName: 'Swanson'},
-    ];
+ Users = require('./models/users'); 
 
-    res.json(customers);
+// Connect to specified database
+mongoose.connect('mongodb://kylwil29:wilson20@ds213338.mlab.com:13338/data_process');
+const db = mongoose.connection;
+
+
+
+
+// Routes
+app.get('/db/check',(req,res) => {    
+    Users.getUsers(function(err,users){
+        if(err){
+            throw err;
+        }
+        res.json(users);
+    });
 });
 
 const port = 5000;
