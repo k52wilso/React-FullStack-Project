@@ -1,0 +1,14 @@
+/* RESPONSIVE CSS */
+
+@media only screen and (max-width: 375px) {
+    .tasks {
+        width:60%;
+        height:100%;
+    }
+    
+    .menubutton {
+        position: relative;
+        width:40%;
+        height:100%;
+    }
+}

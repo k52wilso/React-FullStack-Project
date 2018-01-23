@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './taskPanel.css';
+import MatureTask from '../../taskbar/task/maturetask';
 
 // This class is the component that will be seen in viewport
 class TaskPanel extends Component {
@@ -20,20 +21,20 @@ class TaskPanel extends Component {
         
         <div className="panel resize-drag" key={task.key}>
         
-            <div className="panel-title" >
+            <div className="container-fluid panel-title" >
                 <h4>{task.taskName}</h4>
                 <div className="panel-min-button" onClick={this.props.minimize}>
-                    _
+                    <i className="fa fa-window-minimize" aria-hidden="true"></i>
                 </div>
                 <div className="panel-max-button">
-                    &lt;&gt;  
+                    <i className="fa fa-window-maximize" aria-hidden="true"></i> 
                 </div>
                 <div className="panel-close-button" onClick={this.props.close}>
-                    X
+                    <i className="fa fa-window-close-o" aria-hidden="true"></i>
                 </div>
             </div>
             <div className="inner">
-                {task.component}
+                <MatureTask close={this.props.close}/>
             </div>
         </div>
         

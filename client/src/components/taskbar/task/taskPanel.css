@@ -4,16 +4,18 @@
     left:50px;
     width:1000px;
     height:auto;
-    background-color: white;
-    border:5px solid #2980b9;
-    
+    background-color: rgb(26, 58, 114);
+    border:1px solid #848485;
+    animation: slide-up-fade-in ease 1s;
+    animation-iteration-count: 1;
+    /* animation-fill-mode:forwards; */
 }
 
 .panel .panel-title{
     position: relative;
     width:100%;
     height:40px;
-    background-color:#2980b9;
+    background-color:#2a2b2c;
 }
 
 .panel-title:hover{
@@ -28,17 +30,16 @@
     color:white;
     text-align: left;
     margin: 0;
+    margin-top:10px;
 }
 
 .panel-min-button{
     position: absolute;
     top:-20px;
     right:70px;
-    width:30px;
-    height:30px;
-    background-color: rgb(66, 226, 133);
+    padding: 5px 7px;
+    background-color: rgb(27, 158, 82);
     border-radius: 50%;
-    border:2px solid #fff;
     color:#fff;
 }
 
@@ -48,29 +49,29 @@
     position: absolute;
     top:-20px;
     right:25px;
-    width:30px;
-    height:30px;
-    background-color: rgb(66, 226, 133);
+    padding: 5px 7px;
+    background-color: rgb(199, 166, 53);
     border-radius: 50%;
-    border:2px solid #fff;
     color:#fff;
 }
 
-.panel-min-button:hover,
-.panel-max-button:hover{
+.panel-min-button:hover{
     cursor:pointer;
     background-color: rgb(35, 131, 75);
+}
+
+.panel-max-button:hover{
+    cursor:pointer;
+    background-color: rgb(175, 146, 49);
 }
 
 .panel-close-button{
     position: absolute;
     top:-20px;
     right:-20px;
-    width:30px;
-    height:30px;
+    padding: 5px 7px;
     background-color: rgb(226, 66, 66);
     border-radius: 50%;
-    border:2px solid #fff;
     color:#fff;
 }
 
@@ -84,31 +85,6 @@
     overflow:hidden;
 }
 
-/* Column CSS *************************************/
-.col-12 {
-    float:left;
-    width:100%;
-}
-.col-6 {
-    float:left;
-    width:50%;
-}
-
-.col-6-space {
-    float:left;
-    width:50%;
-    min-height:5px;
-}
-
-.col-4 {
-    float:left;
-    width:33.3333%;
-}
-
-.col-2 {
-    float:left;
-    width:16.66667%;
-}
 
 /* Mature Task CSS ********************************/
 
@@ -116,15 +92,14 @@
 .select {
     width: 90%;
     background-color: #ffffff;
-    border-radius: 5px;
-    border: 2px solid #5a9dcd;
-    color: #4eae6f;
+    border:none;
+    color: #1a221c;
     padding: 10px 5px;
     outline:none;
 }
 
 .disabled {
-    background-color:#c5c5c5;
+    background-color:#858282;
 }
 
 
@@ -132,28 +107,94 @@
     display: block;
     font-size:10px;
     width:100%;
-    color:rgb(66, 63, 63);
+    color:rgb(21, 196, 21);
     margin:10px 0;
+    font-weight:600;
 }
 
 .school-section {
     margin:10px 5px;
     padding:5px 0px;
     border: 2px solid #5a9dcd;
-    border-radius: 5px;
 }
 
 .button {
     padding:10px 40px;
     background:transparent;
     border: 2px solid #5a9dcd;
-    border-radius: 5px;
     margin:10px 5px;
     outline:none;
     transition: 0.3s ease-in;
+    color:rgb(21, 196, 21);
 }
 
 .button:hover {
     background-color: #c5c5c5;
     cursor:pointer;
+}
+
+/* Keyframes CSS */
+@keyframes slide-up-fade-in{
+    0% {
+        opacity:0;
+        transform:  translate(0px,40px)  ;
+    }
+    100% {
+        opacity:1;
+        transform:  translate(0px,0px)  ;
+    }
+}
+
+/* RESPONSIVE CSS */
+
+@media only screen and (max-width: 375px) {
+   
+
+    .panel {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgb(26, 58, 114);
+        border: 1px solid #848485;
+    }
+
+    .inner {
+        width: 100%;
+        height: 100%;
+        overflow: scroll;
+    }
+
+    .panel-min-button{
+        position: absolute;
+        top:2px;
+        right:100px;
+        padding: 5px 7px;
+        background-color: rgb(27, 158, 82);
+        border-radius: 50%;
+        color:#fff;
+    }
+    
+    
+    
+    .panel-max-button{
+        position: absolute;
+        top:2px;
+        right:55px;
+        padding: 5px 7px;
+        background-color: rgb(199, 166, 53);
+        border-radius: 50%;
+        color:#fff;
+    }
+
+    .panel-close-button{
+        position: absolute;
+        top:2px;
+        right:10px;
+        padding: 5px 7px;
+        background-color: rgb(226, 66, 66);
+        border-radius: 50%;
+        color:#fff;
+    }
 }

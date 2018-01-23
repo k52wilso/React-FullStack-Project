@@ -83,3 +83,52 @@
     margin:10px;
     text-align: center;
 }
+
+@keyframes blink {
+    from{background-color: #1b689b;}
+    to{background-color: #78c2f0;}
+}
+
+.taskminimized{
+    animation: blink 1s linear 0s infinite alternate;
+}
+
+.hide{
+    display:none;
+}
+
+
+/* RESPONSIVE CSS */
+
+@media only screen and (max-width: 375px) {
+    .tasks {
+        width:60%;
+        height:100%;
+    }
+    
+    .menubutton {
+        position: relative;
+        width:40%;
+        height:100%;
+    }
+
+    .menubutton h3 {
+        color: #fff;
+        font-size: 14px;
+        text-align: center;
+        margin-bottom: 0;
+    }
+
+    .taskbar .task {
+        width: 40%;
+        height: 30px;
+        overflow:hidden;
+    }
+
+    .taskbar .task h3 {
+        color: white;
+        margin: 10px;
+        text-align: center;
+        font-size: 10px;
+    }
+}

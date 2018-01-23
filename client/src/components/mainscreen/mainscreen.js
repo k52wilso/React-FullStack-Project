@@ -49,7 +49,7 @@ class MainScreen extends Component {
       let index = this.state.panels.findIndex((p) => {return p.key == panel.key;});
       
       // get new state after changing panel's state
-      let newPanels = update(this.state,{panels: {[index]: {taskMinimize: {$set: !panel.minimize }} } });
+      let newPanels = update(this.state,{panels: {[index]: {taskMinimize: {$set: !panel.taskMinimize }} } });
       
       this.setState({
         panels:newPanels.panels
@@ -72,10 +72,11 @@ class MainScreen extends Component {
     }
 
   render() {
+    const baseUrl = process.env.PUBLIC_URL; 
     return (
       <div className="main">
         <div className="viewport resize-container">
-        <h2>Data Processing Software (<Link to="/">logout</Link>)</h2>
+        <h2>Data Processing Software (<Link to={baseUrl + "/"}>logout</Link>)</h2>
         {this.state.panels.map((panel) => {
             if(panel.taskOpen && !panel.taskMinimize){
               return (

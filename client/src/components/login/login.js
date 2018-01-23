@@ -24,7 +24,7 @@ class Login extends Component {
         {/* bottom section of login */}
         <div className="bottom">
           <form className="form">
-              <h2>Login Details</h2>
+              <h2>Login Details <span>(email:test and password:test)</span></h2>
               <input type="email" name="email" placeholder="Email"/>
               <input type="password" name="password" placeholder="Password"/>
 

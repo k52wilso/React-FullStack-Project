@@ -46,9 +46,16 @@ class TaskBar extends Component {
         this.state = {
             tasks:[],
             panels:[],
+            showList:false
         }
 
-        
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick(){
+        this.setState({
+            showList:!this.state.showList
+        })
     }
 
     componentDidMount(){
@@ -59,7 +66,12 @@ class TaskBar extends Component {
       
 
   render() {
-      
+      let hide = 'hide';
+      var m = 'taskminimized';
+      if(this.state.showList == true){
+          hide = '';
+          m = '';
+      }
     return (
       <div className="taskbar">
         <div className="tasks">
@@ -69,15 +81,15 @@ class TaskBar extends Component {
                  if(task.taskOpen){
                     return (
                     
-                            <Task key={task.key} name={task.taskName} task={task}/>
+                            <Task key={task.key} name={task.taskName} task={task} handleClick={this.props.minimize}/>
                         
                     )
                 }
             })}
         </div>
-        <div className="menubutton" >
-            <h3>Search Tools</h3>
-            <div className="menu">
+        <div className={`menubutton ${m}`} >
+            <h3 onClick={this.handleClick}>Search Tools <i className="fa fa-windows" aria-hidden="true"></i></h3>
+            <div className={`menu ${hide}`}>
                 <ul>
                 {this.state.tasks.map((task) => (
                     <li key={task.key} onClick={this.props.create.bind(this,task)}>{task.taskName}</li>
