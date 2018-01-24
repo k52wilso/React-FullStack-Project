@@ -16,7 +16,10 @@ app.use(session({
 
 app.use(bodyParser.json());
 
- Users = require('./models/users'); 
+ //Models
+ Users = require('./models/users');
+ Accounts = require('./models/accounts'); 
+
 
 // Connect to specified database
 mongoose.connect('mongodb://kylwil29:wilson20@ds213338.mlab.com:13338/data_process');
@@ -32,6 +35,16 @@ app.get('/users',(req,res) => {
             throw err;
         }
         res.json(users);
+    });
+});
+
+// Get all accounts needed for mature task
+app.get('/accounts',(req,res) => {
+    Accounts.getAccounts(function(err,accounts){
+        if(err){
+            throw err;
+        }
+        res.json(accounts);
     });
 });
 
@@ -65,6 +78,23 @@ app.post('/logged',(req,res) => {
 app.post('/logout',(req,res) => {
     req.session.user = null;
 });
+
+
+// Find Account by account_id
+app.post('/account',(req,res) => {
+    var data = req.body;
+    Accounts.getAccount(data,function(err,account){
+        if(err){
+            throw err;      
+        }
+
+        //Return the found account
+        res.json(account);
+    });
+});
+
+
+
 
 const port = 5000;
 

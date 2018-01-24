@@ -19,7 +19,7 @@ class TaskPanel extends Component {
 
         
         let panels = document.getElementsByClassName('panel');
-        console.log(panels);
+        
         //Push all panels back
         for(let i = 0 ; i < panels.length ;i++){
             panels[i].style.zIndex = 0;

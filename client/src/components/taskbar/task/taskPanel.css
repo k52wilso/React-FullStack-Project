@@ -1,6 +1,6 @@
 .panel {
     position: absolute;
-    top:50px;
+    top:30px;
     left:50px;
     width:1000px;
     height:auto;
@@ -131,6 +131,14 @@
 .button:hover {
     background-color: #c5c5c5;
     cursor:pointer;
+}
+
+.white-title{
+    color:rgb(21, 196, 21);
+}
+
+#find_account {
+    margin-bottom:20px;
 }
 
 /* Keyframes CSS */
