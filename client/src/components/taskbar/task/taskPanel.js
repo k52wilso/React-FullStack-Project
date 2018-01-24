@@ -11,15 +11,32 @@ class TaskPanel extends Component {
             task:{}
         };
 
-        
+        this.bringFront = this.bringFront.bind(this);
     }
+
+    // Bring panel to the front
+    bringFront(e){
+
+        
+        let panels = document.getElementsByClassName('panel');
+        console.log(panels);
+        //Push all panels back
+        for(let i = 0 ; i < panels.length ;i++){
+            panels[i].style.zIndex = 0;
+        }
+
+        //Bring necessary one forward
+        e.currentTarget.style.zIndex = 1;
+
+    }
+
 
   render() {
     const { task } = this.props;
     return (
       
         
-        <div className="panel resize-drag" key={task.key}>
+        <div className="panel resize-drag" key={task.key} onClick={this.bringFront.bind(this)}>
         
             <div className="container-fluid panel-title" >
                 <h4>{task.taskName}</h4>

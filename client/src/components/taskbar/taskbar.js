@@ -29,14 +29,17 @@ const tasks = [{
     taskMinimize:false,
     taskMaximize:false,
     component: <MatureTask/>
-    },{
-    key:2,
-    taskName:"Mature Plan SDO",
-    taskOpen:true,
-    taskMinimize:false,
-    taskMaximize:false,
-    component:<MatureTask/>
-}];
+}
+//     },{
+//     key:2,
+//     taskName:"Mature Plan SDO",
+//     taskOpen:true,
+//     taskMinimize:false,
+//     taskMaximize:false,
+//     component:<MatureTask/>
+// }
+];
+
 
 class TaskBar extends Component {
 
@@ -91,6 +94,7 @@ class TaskBar extends Component {
             <h3 onClick={this.handleClick}>Search Tools <i className="fa fa-windows" aria-hidden="true"></i></h3>
             <div className={`menu ${hide}`}>
                 <ul>
+                    <li>Tutorial</li>
                 {this.state.tasks.map((task) => (
                     <li key={task.key} onClick={this.props.create.bind(this,task)}>{task.taskName}</li>
                 ))}
