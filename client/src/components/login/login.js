@@ -1,11 +1,23 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 
+// Create button function
+const Button = (callback) => (
+  <Route render={({ history}) => (
+    <button
+      type='button' className="button"
+      onClick={() => { callback(history) }}
+    >
+      Login
+    </button>
+  )} />
+)
 
 class Login extends Component {
 
     constructor(){
         super();
+        
         
       }
   
@@ -23,14 +35,14 @@ class Login extends Component {
 
         {/* bottom section of login */}
         <div className="bottom">
-          <form className="form">
+          <form className="form" >
               <h2>Login Details <span>(email:test and password:test)</span></h2>
-              <input type="email" name="email" placeholder="Email"/>
-              <input type="password" name="password" placeholder="Password"/>
+              <input type="email" name="email" id="email" placeholder="Email"/>
+              <input type="password" name="password" id="password" placeholder="Password"/>
 
-              <Link to={baseUrl + "/main"}>
-                <button type="button">Login</button>
-              </Link>
+              
+                {Button(this.props.check)}
+              
           </form>
         </div>
 

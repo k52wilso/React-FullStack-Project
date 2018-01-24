@@ -16,11 +16,16 @@ class MainScreen extends Component {
       this.addPanel = this.addPanel.bind(this);
       this.closePanel = this.closePanel.bind(this);
       this.minimize = this.minimize.bind(this);
+      
     }
 
     state = {
       panels:[]
     }
+
+    
+
+    
 
     //Add a panel 
     addPanel(panel){
@@ -76,7 +81,7 @@ class MainScreen extends Component {
     return (
       <div className="main">
         <div className="viewport resize-container">
-        <h2>Data Processing Software (<Link to={baseUrl + "/"}>logout</Link>)</h2>
+        <h2>Data Processing Software <Link to={baseUrl + "/"}>(logout)</Link></h2>
         {this.state.panels.map((panel) => {
             if(panel.taskOpen && !panel.taskMinimize){
               return (
