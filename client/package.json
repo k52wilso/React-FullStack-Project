@@ -2,7 +2,6 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://kylewilsonmccormack.com/datasoftware",
   "dependencies": {
     "immutability-helper": "^2.6.4",
     "react": "^16.2.0",

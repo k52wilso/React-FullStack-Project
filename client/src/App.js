@@ -7,7 +7,9 @@ import { BrowserRouter as Router,
   Switch,
   Link, } from 'react-router-dom'
 
+  // Constant variables
   const baseUrl = process.env.PUBLIC_URL;
+  
 
 class App extends Component {
 
@@ -16,6 +18,8 @@ class App extends Component {
 
       this.checkLogin = this.checkLogin.bind(this);
    } 
+
+   
 
   //  Check the provide login details
     checkLogin(history){

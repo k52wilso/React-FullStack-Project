@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const path = require('path');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const session = require('express-session');
@@ -15,6 +16,9 @@ app.use(session({
   }))
 
 app.use(bodyParser.json());
+
+// Serve react app
+app.use(express.static(path.join(__dirname, 'client/build')));
 
  //Models
  Users = require('./models/users');
