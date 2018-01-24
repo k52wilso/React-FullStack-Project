@@ -29,10 +29,7 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 mongoose.connect('mongodb://kylwil29:wilson20@ds213338.mlab.com:13338/data_process');
 const db = mongoose.connection;
 
-// All other requests
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname+'/client/build/index.html'));
-});
+
 
  
 // Routes
@@ -55,7 +52,10 @@ app.get('/accounts',(req,res) => {
     });
 });
 
-
+// All other requests
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname+'/client/build/index.html'));
+});
 
 
 // Verify the login
