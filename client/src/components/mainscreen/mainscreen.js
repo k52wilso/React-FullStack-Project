@@ -16,7 +16,8 @@ class MainScreen extends Component {
       this.addPanel = this.addPanel.bind(this);
       this.closePanel = this.closePanel.bind(this);
       this.minimize = this.minimize.bind(this);
-      
+      this.edit = this.edit.bind(this);
+      this.addAccount = this.addAccount.bind(this);
     }
 
     state = {
@@ -61,7 +62,85 @@ class MainScreen extends Component {
       })
     }
 
-    
+    //Set Panel to add 
+    addAccount(panel,id){
+      
+      // Find the index of given panel
+      let index = this.state.panels.findIndex((p) => {return p.key == panel.key;});
+      
+      // get new state after changing panel's state
+      let newPanels = update(this.state,{panels: {[index]: {edit: {$set: true }} } });
+      
+      //Find element in DOM and alter all children inputs/select
+      let panelDOM = document.getElementById('panel' + id);
+
+      let inputs = panelDOM.querySelectorAll('input:not(#account_id)');
+      let selects = panelDOM.querySelectorAll('select:not(#find_account)');
+
+      // if true make uneditable
+      
+         for(let i = 0; i < inputs.length ; i++){
+           inputs[i].classList.remove('disabled');
+           inputs[i].removeAttribute('readonly','');
+         }
+          for(let j = 0; j < selects.length ; j++){
+            selects[j].classList.remove('disabled');
+            selects[j].removeAttribute('disabled','');
+          }
+      
+
+
+      this.setState({
+        panels:newPanels.panels
+      })
+    }
+
+    //Set Edit for the panel
+    edit(panel,id){
+      
+      if(document.getElementById('account_id').value == ""){
+        alert('please select an account to edit');
+        return ;
+      }
+
+      // Find the index of given panel
+      let index = this.state.panels.findIndex((p) => {return p.key == panel.key;});
+      
+      // get new state after changing panel's state
+      let newPanels = update(this.state,{panels: {[index]: {edit: {$set: !panel.edit }} } });
+      
+      //Find element in DOM and alter all children inputs/select
+      let panelDOM = document.getElementById('panel' + id);
+
+      let inputs = panelDOM.querySelectorAll('input:not(#account_id)');
+      let selects = panelDOM.querySelectorAll('select:not(#find_account)');
+
+      // if true make uneditable
+      if(panel.edit == true){
+        for(let i = 0; i < inputs.length ; i++){
+          inputs[i].classList.add('disabled');
+          inputs[i].setAttribute('readonly','');
+        }
+         for(let j = 0; j < selects.length ; j++){
+           selects[j].classList.add('disabled');
+           selects[j].setAttribute('disabled','');
+         }
+      }else{
+         for(let i = 0; i < inputs.length ; i++){
+           inputs[i].classList.remove('disabled');
+           inputs[i].removeAttribute('readonly','');
+         }
+          for(let j = 0; j < selects.length ; j++){
+            selects[j].classList.remove('disabled');
+            selects[j].removeAttribute('disabled','');
+          }
+      }
+
+
+      this.setState({
+        panels:newPanels.panels
+      })
+    }
       
     //Close the given panel
     closePanel(panel){
@@ -86,7 +165,7 @@ class MainScreen extends Component {
             if(panel.taskOpen && !panel.taskMinimize){
               return (
                 
-                 <TaskPanel key={panel.key} task={panel} minimize={this.minimize.bind(this,panel)} close={this.closePanel.bind(this,panel)}/>              
+                 <TaskPanel key={panel.key} task={panel} minimize={this.minimize.bind(this,panel)} add={this.addAccount.bind(this,panel)} edit={this.edit.bind(this,panel)} close={this.closePanel.bind(this,panel)}/>              
                
              ) 
             }

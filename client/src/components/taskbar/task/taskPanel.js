@@ -30,28 +30,30 @@ class TaskPanel extends Component {
 
     }
 
+    
+
 
   render() {
     const { task } = this.props;
     return (
       
         
-        <div className="panel resize-drag" key={task.key} onClick={this.bringFront.bind(this)}>
+        <div className="panel resize-drag" key={task.key} id={ "panel" + task.key} onClick={this.bringFront.bind(this)}>
         
             <div className="container-fluid panel-title" >
                 <h4>{task.taskName}</h4>
-                <div className="panel-min-button" onClick={this.props.minimize}>
-                    <i className="fa fa-window-minimize" aria-hidden="true"></i>
+                <div className="panel-close-button" onClick={this.props.close}>
+                    <i className="fa fa-window-close-o" aria-hidden="true"></i>
                 </div>
                 <div className="panel-max-button">
                     <i className="fa fa-window-maximize" aria-hidden="true"></i> 
                 </div>
-                <div className="panel-close-button" onClick={this.props.close}>
-                    <i className="fa fa-window-close-o" aria-hidden="true"></i>
+                <div className="panel-min-button" onClick={this.props.minimize}>
+                    <i className="fa fa-window-minimize" aria-hidden="true"></i>
                 </div>
             </div>
             <div className="inner">
-                <MatureTask close={this.props.close}/>
+                <MatureTask panel={task.key} close={this.props.close} add={this.props.add} edit={this.props.edit}/>
             </div>
         </div>
         

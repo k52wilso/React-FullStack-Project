@@ -21,6 +21,7 @@ const remove = (array, element) => {
 // - taskMaximized: task is full viewport
 // - taskPosition: is a object of {xPos,yPos} denoting tasks position in view
 // - component: the component that needs to be display 
+// - edit: when the panel is in edit mode or not
 
 const tasks = [{
     key:1,
@@ -28,7 +29,8 @@ const tasks = [{
     taskOpen:true,
     taskMinimize:false,
     taskMaximize:false,
-    component: <MatureTask/>
+    component: <MatureTask/>,
+    edit:false,
 }
 //     },{
 //     key:2,

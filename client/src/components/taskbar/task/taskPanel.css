@@ -27,33 +27,22 @@
 }
 
 .panel-title h4{
+    float:left;
     color:white;
     text-align: left;
     margin: 0;
     margin-top:10px;
 }
 
-.panel-min-button{
-    position: absolute;
-    top:-20px;
-    right:70px;
+.panel-title div {
+    float:right;
+    margin:5px;
     padding: 5px 7px;
-    background-color: rgb(27, 158, 82);
+    background-color:#57585a;
     border-radius: 50%;
     color:#fff;
 }
 
-
-
-.panel-max-button{
-    position: absolute;
-    top:-20px;
-    right:25px;
-    padding: 5px 7px;
-    background-color: rgb(199, 166, 53);
-    border-radius: 50%;
-    color:#fff;
-}
 
 .panel-min-button:hover{
     cursor:pointer;
@@ -65,15 +54,7 @@
     background-color: rgb(175, 146, 49);
 }
 
-.panel-close-button{
-    position: absolute;
-    top:-20px;
-    right:-20px;
-    padding: 5px 7px;
-    background-color: rgb(226, 66, 66);
-    border-radius: 50%;
-    color:#fff;
-}
+
 
 .panel-close-button:hover{
     cursor: pointer;
@@ -139,6 +120,31 @@
 
 #find_account {
     margin-bottom:20px;
+}
+
+
+/* CRUD buttons */
+.crud-button{
+    outline: none;
+    margin:5px;
+}
+
+.crud-button i {
+    color:white;
+}
+
+.crud-button:first-child{
+    background-color: #27ae60;
+    border:1px solid #27ae60;
+}
+.crud-button:nth-child(2){
+    background-color: #f1c40f;
+    border:1px solid #f1c40f;    
+}
+.crud-button:last-child{
+    background-color: #e74c3c;
+    border:1px solid #e74c3c;
+    
 }
 
 /* Keyframes CSS */
